@@ -36,11 +36,5 @@ namespace API.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-
-        public override bool Equals(object obj)
-        {
-            return obj is TokenService service &&
-                   System.Collections.Generic.EqualityComparer<SymmetricSecurityKey>.Default.Equals(_key, service._key);
-        }
     }
 }
