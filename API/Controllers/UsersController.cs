@@ -42,15 +42,15 @@ namespace API.Controllers
         }
 
         // api/users/1
-        [HttpGet("{username}")]
-        public async Task<ActionResult<MemberDto>> GetUser(string username)
-        {
-            var user = await _repository.GetUserbyUsernameAsync(username);
-            var mappedUser = this._mapper.Map<MemberDto>(user);
-            return Ok(mappedUser);
-        }
+        // [HttpGet("{member}")]
+        // public async Task<ActionResult<MemberDto>> GetUser(string username)
+        // {
+        //     var user = await _repository.GetUserbyUsernameAsync(username);
+        //     var mappedUser = this._mapper.Map<MemberDto>(user);
+        //     return Ok(mappedUser);
+        // }
 
-        [HttpGet("user/{member}")]
+        [HttpGet("{member}")]
         public async Task<ActionResult<MemberDto>> GetMember(string member)
         {
             var user = await _repository.GetMemberAsync(member);
