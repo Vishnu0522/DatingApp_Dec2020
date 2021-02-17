@@ -1,5 +1,5 @@
 export class User {
-    Username = '';
+    username = '';
     Password = '';
     token = '';
 }

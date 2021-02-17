@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -17,6 +16,9 @@ import { TestErrorsComponent } from './test-errors/test-errors.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { JwtInterceptor } from './_interceptor/jwt.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { SharedModule } from './shared/shared.module';
     ListsComponent,
     MessagesComponent,
     TestErrorsComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -37,11 +40,13 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
   ],
   exports:[MemberDetailComponent],
   providers: [
-    {provide:HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true}
+    {provide:HTTP_INTERCEPTORS, useClass:JwtInterceptor,multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]
 })

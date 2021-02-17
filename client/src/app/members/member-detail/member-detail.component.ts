@@ -11,7 +11,7 @@ import { MemberListComponent } from '../member-list/member-list.component';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-  member!: Member;
+  member?: Member;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   constructor(private _memberService: MemberService, private activatedRoute: ActivatedRoute) {
@@ -42,7 +42,8 @@ export class MemberDetailComponent implements OnInit {
 
   getImage(): NgxGalleryImage[] {
     const imageUrls = [];
-    for (const photo of this.member?.photos)
+    if(this.member != undefined)
+    for (const photo of this.member.photos)
       imageUrls.push({
         small: photo?.url,
         medium: photo?.url,

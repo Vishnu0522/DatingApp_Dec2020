@@ -41,9 +41,9 @@ namespace API.Data
             return await this._context.SaveChangesAsync() > 0;
         }
 
-        void IUserRepository.Update(AppUser user)
+        public void Update(AppUser user)
         {
-            throw new System.NotImplementedException();
+            this._context.Users.Update(user);
         }
 
         public Task<IEnumerable<MemberDto>> GetMembersAsync()
